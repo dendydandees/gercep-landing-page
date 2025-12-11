@@ -20,7 +20,7 @@ const navItems = [
   { name: "Clients", link: "#clients" },
 ];
 
-export function Navbar() {
+export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (

@@ -82,11 +82,11 @@ export const NavBody = ({ children, className }: NavBodyProps) => {
           : "none",
         opacity: 1,
         scale: 1,
-        width: visible ? "80%" : "100%",
+        width: visible ? "75%" : "100%",
         y: visible ? 20 : 0,
       }}
       className={cn(
-        "relative z-50 mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex",
+        "container relative z-50 mx-auto hidden w-full flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex",
         visible ? "bg-background/50" : "p-4",
         className
       )}

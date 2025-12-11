@@ -73,3 +73,24 @@ export const FOOTER_LINKS = {
     { icon: TwitterIcon, href: "#", label: "Twitter" },
   ],
 };
+
+export const TEAMS = [
+  {
+    name: "Kevin Lieanor",
+    role: "CEO of Gercep",
+    // img: ceoImg,
+    bio: "Ex-Lazada, Maersk, Zalora. Expert in supply chain management and business scalability.",
+  },
+  {
+    name: "Rendi Joseph",
+    role: "CCO of Gercep",
+    // img: ccoImg,
+    bio: "Seasoned logistics leader (Lion Parcel, PCP Express). Focus on operational excellence.",
+  },
+  {
+    name: "Dandi Napitupulu",
+    role: "CFO of Gercep",
+    // img: cfoImg,
+    bio: "Financial strategist with extensive risk management expertise across multiple industries.",
+  },
+];

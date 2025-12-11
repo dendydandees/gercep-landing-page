@@ -31,7 +31,7 @@ const heroButtonVariant = {
   },
 } satisfies Variants;
 
-export default function Hero() {
+export default function HeroSection() {
   const { scrollY } = useScroll();
   const parallaxY = useTransform(scrollY, [0, 600], ["0%", "50%"]);
 
@@ -59,7 +59,7 @@ export default function Hero() {
       </div>
 
       <div className="container relative z-20 mx-auto px-4 pt-20">
-        <div className="text-left">
+        <div className="space-y-10 text-left">
           <motion.div animate="visible" className="space-y-6" initial="hidden">
             <motion.div
               className="mb-6 flex items-center gap-3"

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FOOTER_LINKS } from "@/lib/constants";
 
-export function Footer() {
+export default function Footer() {
   const isShow = {
     mainSocials: false,
     bottomRight: "love" as "love" | "term_and_privacy",
@@ -13,15 +13,14 @@ export function Footer() {
       <div
         className="pointer-events-none absolute inset-0 opacity-20"
         style={{
-          backgroundImage:
-            'url("https://framerusercontent.com/images/1WvavXN2s5QvQhCwCBS5jl8zcDs.png")',
+          backgroundImage: `url("/bg-image-footer.png")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="grid gap-12 border-primary-foreground/50 border-b pb-12 lg:grid-cols-5">
           <div className="lg:col-span-2">
@@ -98,7 +97,7 @@ export function Footer() {
             <ul className="space-y-4">
               {FOOTER_LINKS.contacts.map((link) => (
                 <li className="flex items-start gap-3" key={link.label}>
-                  <link.icon className="size-5 shrink-0 text-inherit opacity-75" />
+                  <link.icon className="h-5 w-5 shrink-0 text-inherit opacity-75" />
                   <a
                     className="text-sm transition hover:underline hover:underline-offset-8"
                     href={link.href}

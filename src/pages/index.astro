@@ -1,14 +1,10 @@
 ---
-import { About } from "../components/sections/about";
-import { Clients } from "../components/sections/clients";
-import { Fleet } from "../components/sections/fleet";
-import { Footer } from "../components/sections/footer";
-import Hero from "../components/sections/hero";
-import { Leadership } from "../components/sections/leadership";
-import { Navbar } from "../components/sections/navbar";
-import { Services } from "../components/sections/services";
-import { WhyChooseUs } from "../components/sections/why-choose-us";
-import Layout from "../layouts/layout.astro";
+import ClientsSection from "@/components/sections/clients";
+import Footer from "@/components/sections/footer";
+import HeroSection from "@/components/sections/hero";
+import Navbar from "@/components/sections/navbar";
+import TeamSection from "@/components/sections/team";
+import Layout from "@/layouts/layout.astro";
 ---
 
 <Layout
@@ -18,15 +14,15 @@ import Layout from "../layouts/layout.astro";
   <Navbar client:load/>
 
   <main>
-    <Hero client:load/>
+    <HeroSection client:load/>
 
     <!-- Below-the-fold: hydrate when visible -->
-    <Clients client:visible/>
+    <ClientsSection client:visible/>
     <!-- <About client:visible/>
     <Services client:visible/>
     <Fleet client:visible/>
-    <WhyChooseUs client:visible/>
-    <Leadership client:visible/> -->
+    <WhyChooseUs client:visible/> -->
+    <TeamSection client:visible/>
   </main>
 
   <Footer client:visible/>
