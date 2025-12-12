@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import { AnimatedTestimonials } from "@/components/ui/aceternity-ui/animated-testimonials";
+import TeamCard from "@/components/ui/aceternity-ui/team-card";
 import { TEAMS } from "@/lib/constants";
 
 const leadershipTestimonials = TEAMS.map((member) => ({
@@ -7,6 +7,8 @@ const leadershipTestimonials = TEAMS.map((member) => ({
   name: member.name,
   designation: member.role,
   src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1000&auto=format&fit=crop",
+  email: member.email,
+  phone: member.phone,
 }));
 
 const sectionVariants: Variants = {
@@ -21,7 +23,7 @@ const sectionVariants: Variants = {
 export default function TeamSection() {
   return (
     <section
-      className="relative overflow-hidden rounded-b-4xl bg-background py-32 shadow-[0_30px_60px_-40px_rgba(15,23,42,0.25)]"
+      className="relative overflow-hidden rounded-b-4xl bg-background py-24 shadow-[0_30px_60px_-40px_rgba(15,23,42,0.5)]"
       id="team"
     >
       {/* Background */}
@@ -34,12 +36,12 @@ export default function TeamSection() {
         />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="mb-16 text-center"
           initial="hidden"
           variants={sectionVariants}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: false, amount: 0.4 }}
           whileInView="visible"
         >
           <span className="mb-2 block font-bold text-primary text-sm uppercase tracking-widest">
@@ -60,8 +62,8 @@ export default function TeamSection() {
           </motion.h2>
         </motion.div>
 
-        <AnimatedTestimonials
-          className="py-12"
+        <TeamCard
+          className="py-0 pt-12 md:py-12"
           testimonials={leadershipTestimonials}
         />
       </div>

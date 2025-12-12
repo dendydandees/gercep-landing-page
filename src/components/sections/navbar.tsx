@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { WHATSAPP_TEXT, WHATSAPP_URL } from "../../lib/constants";
+import {
+  NAVIGATION_ITEMS,
+  WHATSAPP_TEXT,
+  WHATSAPP_URL,
+} from "../../lib/constants";
 import {
   MobileNav,
   MobileNavHeader,
@@ -12,14 +16,6 @@ import {
 } from "../ui/aceternity-ui/resizable-navbar";
 import { Button } from "../ui/button";
 
-const navItems = [
-  { name: "About", link: "#about" },
-  { name: "Services", link: "#services" },
-  { name: "Fleet", link: "#fleet" },
-  { name: "Leadership", link: "#leadership" },
-  { name: "Clients", link: "#clients" },
-];
-
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -28,7 +24,7 @@ export default function Navbar() {
       {/* Desktop Navigation */}
       <NavBody>
         <NavbarLogo />
-        <NavItems items={navItems} />
+        <NavItems items={NAVIGATION_ITEMS} />
         <div className="z-10 flex items-center gap-4">
           <Button
             asChild
@@ -60,7 +56,7 @@ export default function Navbar() {
           isOpen={isMobileMenuOpen}
           onClose={() => setIsMobileMenuOpen(false)}
         >
-          {navItems.map((item, idx) => (
+          {NAVIGATION_ITEMS.map((item, idx) => (
             <a
               className="w-full py-1 font-semibold text-2xl text-foreground/75 hover:text-foreground"
               href={item.link}

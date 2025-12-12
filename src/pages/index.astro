@@ -3,7 +3,8 @@ import ClientsSection from "@/components/sections/clients";
 import Footer from "@/components/sections/footer";
 import HeroSection from "@/components/sections/hero";
 import Navbar from "@/components/sections/navbar";
-import TeamSection from "@/components/sections/team";
+import OurValuesSection from "@/components/sections/our-values";
+import TeamSection from "@/components/sections/teams";
 import Layout from "@/layouts/layout.astro";
 ---
 
@@ -18,10 +19,10 @@ import Layout from "@/layouts/layout.astro";
 
     <!-- Below-the-fold: hydrate when visible -->
     <ClientsSection client:visible/>
-    <!-- <About client:visible/>
-    <Services client:visible/>
-    <Fleet client:visible/>
-    <WhyChooseUs client:visible/> -->
+    <!-- <About client:visible/> -->
+    <!-- <Services client:visible/> -->
+    <!-- <Fleet client:visible/> -->
+    <OurValuesSection client:visible/>
     <TeamSection client:visible/>
   </main>
 

@@ -10,12 +10,14 @@
     "typecheck": "tsc --noEmit",
     "lint": "ultracite check",
     "format": "ultracite fix",
+    "ui": "bunx --bun shadcn@latest",
     "ultracite:validate": "ultracite doctor"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
     "@astrojs/tailwind": "^6.0.2",
     "@radix-ui/react-slot": "^1.2.4",
+    "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/postcss": "^4.1.17",
     "@tailwindcss/vite": "^4.1.17",
     "@types/react": "^19.2.7",

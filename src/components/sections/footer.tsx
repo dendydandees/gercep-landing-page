@@ -22,18 +22,18 @@ export default function Footer() {
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="grid gap-12 border-primary-foreground/50 border-b pb-12 lg:grid-cols-5">
-          <div className="lg:col-span-2">
+        <div className="grid grid-cols-2 gap-12 border-primary-foreground/50 border-b pb-12 md:grid-cols-3 lg:grid-cols-5">
+          <div className="col-span-full lg:col-span-2">
             {/* Brand Column */}
             <motion.a
               className="mb-6 inline-flex items-center gap-3"
               href="/"
               whileHover={{ scale: 1.02 }}
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-foreground/75">
-                <span className="font-bold text-primary text-xl">G</span>
+              <div className="flex size-12 items-center justify-center rounded-full bg-primary-foreground/75">
+                <span className="font-bold text-3xl text-primary">G</span>
               </div>
-              <span className="font-bold text-2xl">GERCEP</span>
+              <span className="font-bold text-4xl">GERCEP</span>
             </motion.a>
 
             <p className="mb-6 max-w-sm text-pretty leading-relaxed">

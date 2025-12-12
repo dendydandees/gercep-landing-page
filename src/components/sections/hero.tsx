@@ -3,7 +3,7 @@ import { ArrowRightIcon } from "lucide-react";
 import { WHATSAPP_TEXT, WHATSAPP_URL } from "@/lib/constants";
 import { Button } from "../ui/button";
 
-const HEROBG = "/modern_logistics_hub_with_trucks_and_containers.webp";
+const HEROBG = "/bg-hero-gercep-express-port.webp";
 const heroTextVariants = {
   hidden: { opacity: 0, y: 32, skewY: 2 },
   visible: (index = 0) => ({
@@ -66,7 +66,7 @@ export default function HeroSection() {
               custom={0}
               variants={heroTextVariants}
             >
-              <span className="rounded-full border border-primary/75 bg-primary/25 px-3 py-1 font-bold text-primary-foreground/50 text-xs uppercase tracking-widest backdrop-blur-sm">
+              <span className="rounded-full border border-primary/75 bg-primary/25 px-3 py-1 font-bold text-primary-foreground/75 text-xs uppercase tracking-widest backdrop-blur-sm">
                 End-to-End Logistics Solutions
               </span>
             </motion.div>

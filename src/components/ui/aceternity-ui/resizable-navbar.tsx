@@ -1,3 +1,8 @@
+/**
+ * Resizable Navbar
+ * base on: https://ui.aceternity.com/components/resizable-navbar
+ *
+ */
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import React, { type ReactNode, useContext, useEffect, useState } from "react";

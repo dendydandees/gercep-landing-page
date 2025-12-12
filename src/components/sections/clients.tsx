@@ -1,3 +1,8 @@
+/**
+ * from component Trusted Brands Grid Layout
+ * base on: https://prebuiltui.com/components/trusted-brand#trusted-brands-grid-layout-6887
+ *
+ */
 import { motion } from "framer-motion";
 import { OUR_CLIENTS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -32,7 +37,8 @@ export default function ClientsSection() {
         <motion.h3
           className="text-center font-medium text-lg text-muted-foreground/75"
           initial={{ opacity: 0, y: 20 }}
-          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          viewport={{ once: false }}
           whileInView={{ opacity: 1, y: 0 }}
         >
           Proudly serving leading companies across various industries
@@ -42,18 +48,19 @@ export default function ClientsSection() {
           <motion.div
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
             initial="hidden"
-            viewport={{ once: true, amount: 0.4 }}
+            viewport={{ once: false, amount: 0.4 }}
             whileInView="show"
           >
             {OUR_CLIENTS.map((company, index) => (
               <motion.div
                 className={cn(
-                  "group flex h-20 w-44 items-center justify-center border border-foreground/15 backdrop-blur md:h-24 md:w-60",
-                  CLIENT_BORDER_CLASS[index] ?? "border border-foreground/15"
+                  "group flex h-20 w-44 items-center justify-center border backdrop-blur md:h-24 md:w-60",
+                  CLIENT_BORDER_CLASS[index] ?? "border"
                 )}
                 custom={index}
                 key={company.name}
                 variants={cardStagger}
+                viewport={{ once: false }}
                 whileHover={{
                   y: -6,
                   scale: 1.02,
@@ -63,7 +70,7 @@ export default function ClientsSection() {
                 <img
                   alt={company.name}
                   className={cn(
-                    "h-auto max-h-14 w-auto max-w-30 object-contain opacity-80 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0 max-sm:scale-75"
+                    "h-auto max-h-14 w-auto max-w-30 object-contain opacity-75 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0 max-sm:scale-75"
                   )}
                   draggable={false}
                   height={32}
