@@ -11,6 +11,7 @@ import {
   MapPinIcon,
   PhoneIcon,
   ShipIcon,
+  SparklesIcon,
   TrendingUpIcon,
   TruckIcon,
   TwitterIcon,
@@ -32,7 +33,7 @@ export const NAVIGATION_ITEMS = [
     link: "#",
     subItems: [
       { name: "Why Choose Us", link: "#our-values" },
-      { name: "About Us", link: "#about" },
+      { name: "About Us", link: "/about" },
       { name: "Contact", link: "#contact" },
     ],
   },
@@ -82,7 +83,7 @@ export const FOOTER_LINKS = {
     { label: "Logistics Consulting", href: "#" },
   ],
   company: [
-    { label: "About Us", href: "#about" },
+    { label: "About Us", href: "/about" },
     { label: "Services", href: "#services" },
     { label: "Our Clients", href: "#clients" },
     { label: "Team", href: "#team" },
@@ -170,7 +171,7 @@ export const OUR_VALUES = [
 export const OUR_SERVICES = [
   {
     title: "Warehouse Management",
-    desc: "Third-party storage and handling solutions with advanced inventory tracking.",
+    desc: "Third-party storage and handling to keep inventory ready-to-ship.",
     image: "/business-warehouse-2.webp",
     icon: WarehouseIcon,
     colSpan: "md:col-span-2",
@@ -204,5 +205,20 @@ export const OUR_SERVICES = [
     icon: BriefcaseIcon,
     colSpan: "md:col-span-1",
     bgClass: "bg-primary text-primary-foreground",
+  },
+];
+
+export const VISION_MISSION = [
+  {
+    title: "Our Vision",
+    description:
+      "To become the most trusted logistics partner, delivering high productivity and innovative solutions that increase customer profitability.",
+    icon: SparklesIcon,
+  },
+  {
+    title: "Our Mission",
+    description:
+      "Provide integrated logistics solutions tailored to customer needs—ensuring timely, secure, and accurate deliveries that create smiles at every stage.",
+    icon: SparklesIcon,
   },
 ];

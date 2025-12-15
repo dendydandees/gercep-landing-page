@@ -31,7 +31,7 @@ export default function ClientsSection() {
   return (
     <section
       aria-labelledby="clients-heading"
-      className="-mt-5 relative overflow-hidden rounded-t-2xl bg-background py-12 md:py-24"
+      className="-mt-5 relative overflow-hidden rounded-t-4xl bg-background py-12 md:py-24"
     >
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         <motion.header

@@ -5,7 +5,13 @@
  */
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import React, { type ReactNode, useContext, useEffect, useState } from "react";
+import React, {
+  type ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,9 +22,12 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 
+export type NavbarTheme = "transparent" | "primary";
+
 type NavbarProps = {
   children: React.ReactNode;
   className?: string;
+  theme?: NavbarTheme;
 };
 
 type NavBodyProps = {
@@ -55,12 +64,35 @@ type MobileNavMenuProps = {
   onClose: () => void;
 };
 
-const NavbarVisibilityContext = React.createContext(false);
+const NavbarContext = React.createContext<{
+  visible: boolean;
+  theme: NavbarTheme;
+}>({
+  visible: false,
+  theme: "transparent",
+});
 
-const useNavbarVisibility = () => useContext(NavbarVisibilityContext);
+export const useNavbarContext = () => useContext(NavbarContext);
+export const useNavbarVisibility = () => useNavbarContext().visible;
+export const useNavbarTheme = () => useNavbarContext().theme;
 
-export const Navbar = ({ children, className }: NavbarProps) => {
+export const Navbar = ({
+  children,
+  className,
+  theme = "transparent",
+}: NavbarProps) => {
   const [visible, setVisible] = useState<boolean>(false);
+  const bgClass = useMemo(() => {
+    if (theme === "primary" && visible) {
+      return "bg-transparent text-foreground";
+    }
+
+    if (theme === "primary" && !visible) {
+      return "bg-primary text-primary-foreground";
+    }
+
+    return "bg-transparent text-white";
+  }, [theme, visible]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,19 +105,37 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   }, []);
 
   return (
-    <NavbarVisibilityContext.Provider value={visible}>
+    <NavbarContext.Provider value={{ visible, theme }}>
       <motion.div
         animate={{ opacity: 1, y: 0 }}
         className={cn(
-          "select-none! sticky inset-x-0 top-0 z-50 w-full",
+          "select-none! sticky inset-x-0 top-0 z-50 w-full transition-colors",
+          bgClass,
           className
         )}
         initial={{ opacity: 0, y: -24 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
+        {/* Background image overlay */}
+        {theme === "primary" ? (
+          <motion.div
+            animate={{ opacity: [0.15, 0.3, 0.15], scale: [1, 1.03, 1] }}
+            aria-hidden
+            className="-z-20 pointer-events-none absolute inset-0 opacity-25!"
+            role="presentation"
+            style={{
+              backgroundImage: `url("/bg-image-footer.png")`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+            transition={{ duration: 16, repeat: Number.POSITIVE_INFINITY }}
+          />
+        ) : null}
+
         {children}
       </motion.div>
-    </NavbarVisibilityContext.Provider>
+    </NavbarContext.Provider>
   );
 };
 

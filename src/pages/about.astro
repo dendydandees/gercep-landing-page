@@ -1,0 +1,20 @@
+---
+import { Header, Vision } from "@/components/about-pages/container";
+import Footer from "@/components/shared/footer";
+import Navbar from "@/components/shared/navbar";
+import Layout from "@/layouts/layout.astro";
+---
+
+<Layout title="About | GERCEP">
+  <Navbar client:load theme="primary"/>
+
+  <main
+    class="relative overflow-hidden flex z-10 flex-col gap-10 bg-background rounded-b-4xl shadow-[0_30px_60px_-40px_rgba(15,23,42,0.5)]"
+  >
+    <Header client:load/>
+
+    <Vision client:load/>
+  </main>
+
+  <Footer client:visible/>
+</Layout>

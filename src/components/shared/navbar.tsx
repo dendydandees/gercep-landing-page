@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   MobileNav,
   MobileNavHeader,
@@ -7,13 +7,17 @@ import {
   MobileNavToggle,
   NavBody,
   NavbarLogo,
+  type NavbarTheme,
   NavItems,
   Navbar as ResizableNavbar,
+  useNavbarTheme,
+  useNavbarVisibility,
 } from "@/components/ui/aceternity-ui/resizable-navbar";
 import { Button } from "@/components/ui/button";
 import { NAVIGATION_ITEMS, WHATSAPP_TEXT, WHATSAPP_URL } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
-const whiteLogo = (
+const WHITE_LOGO = (
   <img
     alt="Gercep logo"
     className="aspect-auto h-10 w-auto"
@@ -23,7 +27,7 @@ const whiteLogo = (
   />
 );
 
-const greenLogo = (
+const GREEN_LOGO = (
   <img
     alt="Gercep logo"
     className="aspect-auto h-10 w-auto"
@@ -33,7 +37,16 @@ const greenLogo = (
   />
 );
 
-export default function Navbar() {
+// * core component of navbar
+export type NavbarProps = {
+  className?: string;
+  theme?: NavbarTheme;
+};
+
+export default function Navbar({
+  className,
+  theme = "transparent",
+}: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Handle body scroll lock when mobile menu is open
@@ -67,35 +80,21 @@ export default function Navbar() {
   }, [isMobileMenuOpen]);
 
   return (
-    <ResizableNavbar className="fixed top-0 right-0 left-0 z-50">
+    <ResizableNavbar
+      className={cn("fixed top-0 right-0 left-0 z-50", className)}
+      theme={theme}
+    >
       {/* Desktop Navigation */}
       <NavBody>
-        <NavbarLogo logo={whiteLogo} logoScrolled={greenLogo} />
+        <NavbarLogo logo={WHITE_LOGO} logoScrolled={GREEN_LOGO} />
         <NavItems items={NAVIGATION_ITEMS} />
-        <motion.div
-          className="z-10 flex items-center gap-4"
-          whileTap={{ scale: 0.95 }}
-        >
-          <Button
-            asChild
-            className="rounded-md px-8 font-bold uppercase tracking-wide"
-            size="lg"
-          >
-            <a
-              href={`${WHATSAPP_URL}?text=${encodeURIComponent(WHATSAPP_TEXT)}`}
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Get a Quote
-            </a>
-          </Button>
-        </motion.div>
+        <NavActions />
       </NavBody>
 
       {/* Mobile Navigation */}
       <MobileNav>
         <MobileNavHeader>
-          <NavbarLogo logo={whiteLogo} logoScrolled={greenLogo} />
+          <NavbarLogo logo={WHITE_LOGO} logoScrolled={GREEN_LOGO} />
           <MobileNavToggle
             isOpen={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -179,5 +178,46 @@ export default function Navbar() {
         </MobileNavMenu>
       </MobileNav>
     </ResizableNavbar>
+  );
+}
+
+// * nav actions for desktop
+function NavActions() {
+  const visible = useNavbarVisibility();
+  const theme = useNavbarTheme();
+  const bgClass = useMemo(() => {
+    if (theme === "primary" && visible) {
+      return "bg-primary text-primary-foreground hover:bg-primary/90";
+    }
+
+    if (theme === "primary" && !visible) {
+      return "bg-background text-primary hover:bg-background/90";
+    }
+
+    return "bg-primary text-primary-foreground hover:bg-primary/90";
+  }, [theme, visible]);
+
+  return (
+    <motion.div
+      className="z-10 flex items-center gap-4"
+      whileTap={{ scale: 0.95 }}
+    >
+      <Button
+        asChild
+        className={cn(
+          "rounded-md px-8 font-bold uppercase tracking-wide transition-colors",
+          bgClass
+        )}
+        size="lg"
+      >
+        <a
+          href={`${WHATSAPP_URL}?text=${encodeURIComponent(WHATSAPP_TEXT)}`}
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          Get a Quote
+        </a>
+      </Button>
+    </motion.div>
   );
 }
