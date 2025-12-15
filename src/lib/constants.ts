@@ -107,7 +107,7 @@ export const TEAMS = [
     role: "CEO of Gercep",
     email: "kevin@gci-express.com",
     phone: "+62 811 9898 922",
-    // img: ceoImg,
+    img: "/gercep-kevin.webp",
     bio: "Ex-Lazada, Maersk, Zalora. Expert in supply chain management and business scalability.",
   },
   {
@@ -115,7 +115,7 @@ export const TEAMS = [
     role: "CCO of Gercep",
     email: "rendidewantoro@gci-express.com",
     phone: "+62 822 9705 0321",
-    // img: ccoImg,
+    img: "/gercep-rendi.webp",
     bio: "Seasoned logistics leader (Lion Parcel, PCP Express). Focus on operational excellence.",
   },
   {
@@ -123,7 +123,7 @@ export const TEAMS = [
     role: "CFO of Gercep",
     email: "dandi@gci-express.com",
     phone: "+62 888 888 888",
-    // img: cfoImg,
+    img: "/gercep-dandi.webp",
     bio: "Financial strategist with extensive risk management expertise across multiple industries.",
   },
 ];

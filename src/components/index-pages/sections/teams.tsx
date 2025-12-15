@@ -7,7 +7,7 @@ const leadershipTestimonials = TEAMS.map((member) => ({
   quote: member.bio,
   name: member.name,
   designation: member.role,
-  src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1000&auto=format&fit=crop",
+  src: member.img,
   email: member.email,
   phone: member.phone,
 }));
